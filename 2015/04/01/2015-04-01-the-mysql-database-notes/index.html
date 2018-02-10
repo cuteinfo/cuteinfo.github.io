@@ -12,7 +12,7 @@
 <meta property="og:url" content="http://cuteinfo.github.io/2015/04/01/2015-04-01-the-mysql-database-notes/index.html">
 <meta property="og:site_name" content="cuteinfo 的随想录">
 <meta property="og:description" content="mysql 5.6 &amp;amp; maria10mysql 5.5 &amp;amp; maria   数据库事务acid ，原子性Atomicity 一致性Consistency(完整性约束条件)隔离性 (互相不可见，串行  Isolation）、持久性（Durability）事务完成后所有操作便持久的保存到数据库中数据库优化    选择合适的字段(短、简单)、尽量不用非空存储字段、主键和索引尽量使用数">
-<meta property="og:updated_time" content="2015-06-28T14:11:51.315Z">
+<meta property="og:updated_time" content="2018-02-10T04:40:33.437Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL数据库相关知识">
 <meta name="twitter:description" content="mysql 5.6 &amp;amp; maria10mysql 5.5 &amp;amp; maria   数据库事务acid ，原子性Atomicity 一致性Consistency(完整性约束条件)隔离性 (互相不可见，串行  Isolation）、持久性（Durability）事务完成后所有操作便持久的保存到数据库中数据库优化    选择合适的字段(短、简单)、尽量不用非空存储字段、主键和索引尽量使用数">
@@ -185,7 +185,9 @@ var _hmt = _hmt || [];
 <p>SHOW GLOBAL VARIABLES LIKE ‘auto_incre%’; – 全局变量</p>
 <p>如果有一张表，里面有个字段为id的自增主键，当已经向表里面插入了10条数据之后，删除了id为8，9，10的数据，再把mysql重启，之后再插入一条数据，那么这条数据的id值应该是多少，是8，还是11？<br>答：如果表的类型为MyISAM，那么是11。如果表的类型为InnoDB，则id为8</p>
 <p>last_insert_id() 它必需紧跟在insert 语句执行之后。<br>1、 SELECT MAX(id) FROM person 针对特定表<br>2、 SELECT LAST_INSERT_ID() 函数 针对任何表，会话级的<br>3、 SELECT @@identity 针对任何表<br>@@identity 是表示的是最近一次向具有identity属性(即自增列)的表插入数据时对应的自增列的值，是系统定义的全局变量。<br>一般系统定义的全局变量都是以@@开头，用户自定义变量以@开头。</p>
-<h2 id="错误语法-select-last-insert-id-favorurl-id-from-favorurl-limit-1-没任何意义，只是获取，from-也不起作用"><a href="#错误语法-select-last-insert-id-favorurl-id-from-favorurl-limit-1-没任何意义，只是获取，from-也不起作用" class="headerlink" title="错误语法 select last_insert_id(favorurl_id) from favorurl limit 1;  没任何意义，只是获取，from 也不起作用"></a>错误语法 select last_insert_id(favorurl_id) from favorurl limit 1;  没任何意义，只是获取，from 也不起作用</h2><p>SHOW TABLE STATUS LIKE ‘person’</p>
+<a id="more"></a>
+<h2 id="错误语法"><a href="#错误语法" class="headerlink" title="错误语法"></a>错误语法</h2><p>select last_insert_id(favorurl_id) from favorurl limit 1;  没任何意义，只是获取，from 也不起作用</p>
+<p>SHOW TABLE STATUS LIKE ‘person’</p>
 <p>ALTER TABLE emp RENAME emp2</p>
 <p>ALTER TABLE emp2 MODIFY id BIGINT</p>
 <p>–删除外键约束<br>ALTER TABLE emp2 DROP FOREIGN KEY fk_emp_dept<br>–删除主键约束<br>ALTER TABLE emp2 DROP PRIMARY KEY pk_emp_dept</p>
@@ -328,7 +330,7 @@ var _hmt = _hmt || [];
 <p>#master-user=repl </p>
 <p>#master-password=repl</p>
 <p>#master-connect-retry=10<br>read-only=1</p>
-<a id="more"></a>
+<!--more-->
 <p>=========================================<br>PostgreSQL  有更多的优势，在某些方面更像oracle<br>比mysql 有更多的优势<br>    在非结构化数据的存取更方便</p>
 <p>初始化数据库 initdb  -D  ..\data –locale=C   -U postgres -W  //-E UTF-8<br>启动数据库  pg_ctl -D  ..\data  -l logfile start </p>
 <p>默认端口5432</p>
