@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>软件开发管理之敏捷开发，兼谈极限编程 | cuteinfo 的随想录</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="软件开发规范和流程 the-rules-of-software-develop  ##敏捷开发    敏捷方法之极限编程(XP)和 Scrum （skuram，橄榄球中的争球）区别  区别之一： 迭代长度的不同XP的一个Sprint的迭代长度大致为1~2周, 而Scrum的迭代长度一般为 2~ 4周. 区别之二: 在迭代中, 是否允许修改需求XP在一个迭代中，如果一个User Story(用户素">
+<meta name="keywords" content="敏捷开发,项目管理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件开发管理之敏捷开发，兼谈极限编程">
+<meta property="og:url" content="http://cuteinfo.github.io/2014/12/01/2014-12-01-the-rules-of-software-develop/index.html">
+<meta property="og:site_name" content="cuteinfo 的随想录">
+<meta property="og:description" content="软件开发规范和流程 the-rules-of-software-develop  ##敏捷开发    敏捷方法之极限编程(XP)和 Scrum （skuram，橄榄球中的争球）区别  区别之一： 迭代长度的不同XP的一个Sprint的迭代长度大致为1~2周, 而Scrum的迭代长度一般为 2~ 4周. 区别之二: 在迭代中, 是否允许修改需求XP在一个迭代中，如果一个User Story(用户素">
+<meta property="og:updated_time" content="2015-05-04T10:35:30.362Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="软件开发管理之敏捷开发，兼谈极限编程">
+<meta name="twitter:description" content="软件开发规范和流程 the-rules-of-software-develop  ##敏捷开发    敏捷方法之极限编程(XP)和 Scrum （skuram，橄榄球中的争球）区别  区别之一： 迭代长度的不同XP的一个Sprint的迭代长度大致为1~2周, 而Scrum的迭代长度一般为 2~ 4周. 区别之二: 在迭代中, 是否允许修改需求XP在一个迭代中，如果一个User Story(用户素">
+  
+    <link rel="alternative" href="/atom.xml" title="cuteinfo 的随想录" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/daxiaobai.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+  
+<script type="text/javascript">
+
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?d0ab8b7852615e703d44a365e9408c77";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+
+</script>
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img lazy-src="/baymax.jpg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">cuteinfo</a></h1>
+		</hgroup>
+
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/cuteinfo" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+								<a class="mail" target="_blank" href="#" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">技术菜鸟;非典型纲丝;欣赏独立思考有想法的人。。。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">cuteinfo</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/baymax.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">cuteinfo</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/cuteinfo" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="mail" target="_blank" href="#" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-2014-12-01-the-rules-of-software-develop" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/12/01/2014-12-01-the-rules-of-software-develop/" class="article-date">
+  	<time datetime="2014-12-01T07:24:26.000Z" itemprop="datePublished">2014-12-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      软件开发管理之敏捷开发，兼谈极限编程
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/敏捷开发/">敏捷开发</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/项目管理/">项目管理</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>软件开发规范和流程 the-rules-of-software-develop</p>
+</blockquote>
+<p>##敏捷开发  </p>
+<blockquote>
+<p>敏捷方法之极限编程(XP)和 Scrum （skuram，橄榄球中的争球）区别</p>
+<ol>
+<li>区别之一： 迭代长度的不同<br>XP的一个Sprint的迭代长度大致为1~2周, 而Scrum的迭代长度一般为 2~ 4周.</li>
+<li>区别之二: 在迭代中, 是否允许修改需求<br>XP在一个迭代中，如果一个User Story(用户素材, 也就是一个需求)还没有实现， 则可以考虑用另外的需求将其替换， 替换的原则是需求实现的时间量是相等的。 而Scrum是不允许这样做的，一旦迭代开工会完毕, 任何需求都不允许添加进来，并有Scrum Master严格把关，不允许开发团队受到干扰</li>
+<li>区别之三: 在迭代中，User Story是否严格按照优先级别来实现<br>XP是务必要遵守优先级别的。 但Scrum在这点做得很灵活， 可以不按照优先级别来做，Scrum这样处理的理由是： 如果优先问题的解决者，由于其它事情耽搁，不能认领任务，那么整个进度就耽误了。 另外一个原因是，如果按优先级排序的User Story #6和#10，虽然#6优先级高，但是如果#6的实现要依赖于#10，则不得不优先做#10.</li>
+<li>区别之四:软件的实施过程中，是否采用严格的工程方法，保证进度或者质量<br>Scrum没有对软件的整个实施过程开出工程实践的处方。要求开发者自觉保证，但XP对整个流程方法定义非常严格，规定需要采用TDD, 自动测试， 结对编程，简单设计，重构等约束团队的行为。</li>
+<li>Scrum偏重于过程，XP则偏重于实践，但是实际中，两者是结合一起应用的</li>
+</ol>
+</blockquote>
+<a id="more"></a>
+<p>###角色定义</p>
+<p>Scrum开发流程中的三大角色 分别是PO（Project Owner），SM（Scrum Master）和TEAM。</p>
+<ol>
+<li><p>产品负责人（Product Owner）<br>主要负责确定产品的功能和达到要求的标准，指定软件的发布日期和交付的内容，同时有权力接受或拒绝开发团队的工作成果。</p>
+</li>
+<li><p>流程管理员（Scrum Master）<br>主要负责整个Scrum流程在项目中的顺利实施和进行，以及清除挡在客户和开发工作之间的沟通障碍，使得客户可以直接驱动开发。</p>
+</li>
+<li><p>开发团队（Scrum Team）<br>主要负责软件产品在Scrum规定流程下进行开发工作，人数控制在5~10人左右，每个成员可能负责不同的技术方面，但要求每成员必须要有很强的自我管理能力，同时具有一定的表达能力；成员可以采用任何工作方式，只要能达到Sprint的目标。</p>
+</li>
+</ol>
+<blockquote>
+<p>敏捷方法的一个重要方面是使得用户和利益相关者参与到过程中的时间。参与每一个冲刺的评审和计划，并提供反馈对于这些人来说是非常重要的。<br>敏捷 是 迭代、循序渐进的开发方法，是一种软件开发的流程，区别于以文档为驱动的瀑布开发流程<br>敏捷开发它只写有必要的文档，或尽量少写文档，敏捷开发注重的是人与人之间，面对面的交流，所以它强调以人为核心。</p>
+</blockquote>
+<p>###Scrum 流程</p>
+<p>Scrum是一个经验性框架，Scrum是一种组织方式，但所有的实施过程怎样进行，还要靠我们自己，在整个过程中不断检验和适应，找出最适合我们的方法。</p>
+<p>以Sprint为(冲刺，全速跑)为单位</p>
+<blockquote>
+<p>详细流程     </p>
+<ul>
+<li>Product Backlog (PBL) 按优先级排列的需求</li>
+<li>Sprint Backlog (SBL)</li>
+<li>(资料地址)[<a href="http://techblog.youdao.com/?p=1189" target="_blank" rel="noopener">http://techblog.youdao.com/?p=1189</a>]</li>
+</ul>
+<ol>
+<li>Daily Scrum<br>Daily    Scrum会议在Sprint中的每一天都要开，而且强烈建议在每一天的同一个时间，同一地点开，最理想的时间是每天早上，因为这个会将影响每一位团队成员今天工作的上下文。</li>
+</ol>
+</blockquote>
+<ol>
+<li>Daily Scrum每日站会可能是大家了解到Scrum时很容易留下深刻印象的一个特点，不同于我们平时多人围坐，一开则几个小时的大会议，这个会议是站着开的，而且时间非常短。大家都很痛恨开会，参会人数越多，会议时间越长，效率就越低，Daily Scrum既然是每天都要开的会议，那么这个问题是一定要避免的。Daily Scrum所有的TEAM成员都要发言，但是每个人的发言仅限于回答三个问题：</li>
+</ol>
+<ul>
+<li>你昨天做了什么？</li>
+<li>你今天打算做什么？</li>
+<li>你遇到了什么阻碍？（需要什么帮助？）<br>当每一位成员回答完这三个问题，TEAM就可以很好的掌握项目当前的状态，什么已经完成了，什么还没有做。需要注意的是，这个会议最主要的目的是让团队成员之间有足够的交流，而不是用来让领导了解项目进度的，所以在Daily Scrum上每个人回答这三个问题的时候，应该面向团队的每一位成员，而不是领导。Daily Scrum的参会成员包括整个Scrum团队，包含PO、SM，在这之外的人也可以参加，但是它们只能听而不能发言，保证了这一点，能够很好的提高Daily Scrum会议的交流效率。</li>
+</ul>
+<blockquote>
+<ul>
+<li><p>Daily Scrum很简短，任何细节问题都不应该拿到这里来讨论。所以如果开会过程中遇到了细节的问题需要进一步讨论，那么应该在Daily Scrum结束之后，另外组织会议讨论这个问题，因此在Daily Scrum进行过程中Scrum Master一定要注意控制会议的主题，防止进入过度的细节中而使会议效率降低，在适当的时候要阻止这个趋势。</p>
+</li>
+<li><p>在实践中，我发现要严格地做到控制Daily Scrum时长并不是容易的事情，大家一起讨论很容易就不自觉地开始描述细节。这里有一个小技巧，我见过某些Scrum团队会在Daily Scrum的时候以传递物品的方式来轮流发言，比如传递一个小公仔之类的物品，这个方式的本意是防止发言的人被其他人打断，而如果把这个小公仔更换成一个重物（要足够重哦，哑铃、板砖什么的都可以），当发言的人搬着重物说的时候，就会发现越来越吃力，于是就能够不断提醒自己简短地说，尽快结束发言了。</p>
+</li>
+</ul>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/01/13/2015-01-13-how-to-run-jetty8-in-myeclipse6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Myeclipse6下运行jetty8或更高版本
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2000/01/01/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2014-12-01-the-rules-of-software-develop" data-title="软件开发管理之敏捷开发，兼谈极限编程" data-url="http://cuteinfo.github.io/2014/12/01/2014-12-01-the-rules-of-software-develop/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"plpone"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2018 cuteinfo 的随想录
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/mobile.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  </div>
+</body>
+</html>

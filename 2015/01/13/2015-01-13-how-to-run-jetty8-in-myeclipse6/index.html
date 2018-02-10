@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Myeclipse6下运行jetty8或更高版本 | cuteinfo 的随想录</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="如何在运行 Myeclipse6下运行jetty8或更高版本  ##问题由来自己笔记本配置比较低，然后又因为Java开发对电脑配置要求比较高，故选择继续使用Myeclipse6.5(盗版的，忏悔)，虽然尝试过使用eclipse、netbeans、idea 等工具，但还是感觉比较熟悉Myeclipse6.5。 言归正传，最近想玩玩jetty ,到官网发现最新的都已经到9了，而我打算先用个低版本的试">
+<meta name="keywords" content="eclipse,jetty">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Myeclipse6下运行jetty8或更高版本">
+<meta property="og:url" content="http://cuteinfo.github.io/2015/01/13/2015-01-13-how-to-run-jetty8-in-myeclipse6/index.html">
+<meta property="og:site_name" content="cuteinfo 的随想录">
+<meta property="og:description" content="如何在运行 Myeclipse6下运行jetty8或更高版本  ##问题由来自己笔记本配置比较低，然后又因为Java开发对电脑配置要求比较高，故选择继续使用Myeclipse6.5(盗版的，忏悔)，虽然尝试过使用eclipse、netbeans、idea 等工具，但还是感觉比较熟悉Myeclipse6.5。 言归正传，最近想玩玩jetty ,到官网发现最新的都已经到9了，而我打算先用个低版本的试">
+<meta property="og:image" content="http://cuteinfo.github.io/images/use-jetty8-in-myeclipse6-img1.jpg">
+<meta property="og:updated_time" content="2015-05-04T10:28:48.101Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Myeclipse6下运行jetty8或更高版本">
+<meta name="twitter:description" content="如何在运行 Myeclipse6下运行jetty8或更高版本  ##问题由来自己笔记本配置比较低，然后又因为Java开发对电脑配置要求比较高，故选择继续使用Myeclipse6.5(盗版的，忏悔)，虽然尝试过使用eclipse、netbeans、idea 等工具，但还是感觉比较熟悉Myeclipse6.5。 言归正传，最近想玩玩jetty ,到官网发现最新的都已经到9了，而我打算先用个低版本的试">
+<meta name="twitter:image" content="http://cuteinfo.github.io/images/use-jetty8-in-myeclipse6-img1.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="cuteinfo 的随想录" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/daxiaobai.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+  
+<script type="text/javascript">
+
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?d0ab8b7852615e703d44a365e9408c77";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+
+</script>
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img lazy-src="/baymax.jpg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">cuteinfo</a></h1>
+		</hgroup>
+
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/cuteinfo" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+								<a class="mail" target="_blank" href="#" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">技术菜鸟;非典型纲丝;欣赏独立思考有想法的人。。。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">cuteinfo</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/baymax.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">cuteinfo</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/cuteinfo" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="mail" target="_blank" href="#" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-2015-01-13-how-to-run-jetty8-in-myeclipse6" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/01/13/2015-01-13-how-to-run-jetty8-in-myeclipse6/" class="article-date">
+  	<time datetime="2015-01-13T07:24:26.000Z" itemprop="datePublished">2015-01-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Myeclipse6下运行jetty8或更高版本
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/eclipse/">eclipse</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jetty/">jetty</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>如何在运行 Myeclipse6下运行jetty8或更高版本</p>
+</blockquote>
+<p>##问题由来<br>自己笔记本配置比较低，然后又因为Java开发对电脑配置要求比较高，故选择继续使用Myeclipse6.5(盗版的，忏悔)，虽然尝试过使用eclipse、netbeans、idea 等工具，但还是感觉比较熟悉Myeclipse6.5。</p>
+<p>言归正传，最近想玩玩jetty ,到官网发现最新的都已经到9了，而我打算先用个低版本的试试，就选择了8，然而果然没跑起来，经过排查问题，得知是Myeclipse的jetty插件调用jetty的时候，没找到main函数，而这一切的“罪魁祸首”就是 jetty已经并入eclipse中了，所以所有代码的包路径已经有·org.mortbay·换为·org.eclipse.jetty·，经过思考后发现是可以改造下让其运行在Myeclipse6下的。</p>
+<p>##具体步骤</p>
+<a id="more"></a>
+<p>新建一个简单的java工程，建立代码结构如下</p>
+<p><img src="/images/use-jetty8-in-myeclipse6-img1.jpg" alt=""></p>
+<ol>
+<li>org.eclipse.jetty.start.Main 类写一个空类即可，作为一个辅助生成编译文件的类</li>
+<li><p>org.mortbay.start.Main中代码如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> <span class="keyword">extends</span> <span class="title">org</span>.<span class="title">eclipse</span>.<span class="title">jetty</span>.<span class="title">start</span>.<span class="title">Main</span></span>&#123;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将生成的org.mortbay.start.Main 的Java class文件，放到jetty目录下start.jar压缩包 中相应的目录中<br>4.没有4了，这样就可以在myeclipse中运行相应的jetty了。</p>
+</li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/02/02/2015-02-02-iaas-service-use-and-sum/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          云服务与云计算使用总结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/12/01/2014-12-01-the-rules-of-software-develop/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">软件开发管理之敏捷开发，兼谈极限编程</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2015-01-13-how-to-run-jetty8-in-myeclipse6" data-title="Myeclipse6下运行jetty8或更高版本" data-url="http://cuteinfo.github.io/2015/01/13/2015-01-13-how-to-run-jetty8-in-myeclipse6/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"plpone"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2018 cuteinfo 的随想录
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/mobile.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  </div>
+</body>
+</html>

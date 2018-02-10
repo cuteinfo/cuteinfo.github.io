@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>java技术笔记 | cuteinfo 的随想录</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="##Java相关琐碎知识记录======================================= jetty+spring 无法访问 web.xml中的welcome-list      http://blog.csdn.net/hynet/article/details/8646644 ====================================== javac -Dja">
+<meta name="keywords" content="java,笔记,j2ee">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java技术笔记">
+<meta property="og:url" content="http://cuteinfo.github.io/2015/03/30/2015-03-30-the-java-thinking-notes/index.html">
+<meta property="og:site_name" content="cuteinfo 的随想录">
+<meta property="og:description" content="##Java相关琐碎知识记录======================================= jetty+spring 无法访问 web.xml中的welcome-list      http://blog.csdn.net/hynet/article/details/8646644 ====================================== javac -Dja">
+<meta property="og:updated_time" content="2015-06-14T08:24:56.168Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java技术笔记">
+<meta name="twitter:description" content="##Java相关琐碎知识记录======================================= jetty+spring 无法访问 web.xml中的welcome-list      http://blog.csdn.net/hynet/article/details/8646644 ====================================== javac -Dja">
+  
+    <link rel="alternative" href="/atom.xml" title="cuteinfo 的随想录" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/daxiaobai.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+  
+<script type="text/javascript">
+
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?d0ab8b7852615e703d44a365e9408c77";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+
+</script>
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img lazy-src="/baymax.jpg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">cuteinfo</a></h1>
+		</hgroup>
+
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/cuteinfo" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+								<a class="mail" target="_blank" href="#" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">技术菜鸟;非典型纲丝;欣赏独立思考有想法的人。。。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">cuteinfo</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/baymax.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">cuteinfo</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/cuteinfo" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="mail" target="_blank" href="#" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-2015-03-30-the-java-thinking-notes" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/03/30/2015-03-30-the-java-thinking-notes/" class="article-date">
+  	<time datetime="2015-03-29T16:00:00.000Z" itemprop="datePublished">2015-03-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      java技术笔记
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/j2ee/">j2ee</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h1 id="Java相关琐碎知识记录"><a href="#Java相关琐碎知识记录" class="headerlink" title="##Java相关琐碎知识记录"></a>##Java相关琐碎知识记录</h1><p>=======================================<br> jetty+spring 无法访问 web.xml中的welcome-list<br> <mvc:default-servlet-handler>     <a href="http://blog.csdn.net/hynet/article/details/8646644" target="_blank" rel="noopener">http://blog.csdn.net/hynet/article/details/8646644</a></mvc:default-servlet-handler></p>
+<p>======================================</p>
+<p>javac -Djava.ext.dirs=jedis -encoding utf8  RedisSuber.java<br>java/javac 使用外部jar包（java -jar 是一样的情况）<br>这样说不可以的java -classpath “.;../lib/<em>.jar”  plp.brilliant.test.SpringTest<br>必须带上每个jar的名字 java -classpath “.;../lib/ant.jar ../lib/hibernate.jar”  plp.brilliant.<br>【简单方法】<br>1，java -Djava.ext.dirs=../lib plp.brilliant.test.SpringTest<br>          编译：javac -Djava.ext.dirs=./lib Test.java<br>运行：java -Djava.ext.dirs=./lib Test<br>./lib是指存放第三方jar文件的目录。也可以写成绝对路径:/<em>*/lib （试过了可以！） </em></em><br>Test.java指包含main函数的类。<br>2，把所有的jar包解压开和自己打包的jar内容合并后在压缩起来即可。</p>
+<p>==========================================================<br>RAID Level 5是一种储存性能、数据安全和存储成本兼顾的存储解决方案。它使用的是Disk Striping（硬盘分区）技术。RAID 5至少需要三颗硬盘，RAID 5不是对存储的数据进行备份，而是把数据和相对应的奇偶校验信息存储到组成RAID5的各个磁盘上，并且奇偶校验信息和相对应的数据分别存储于不同的磁盘上。当RAID5的一个磁盘数据发生损坏后，可以利用剩下的数据和相应的奇偶校验信息去恢复被损坏的数据。RAID 5可以理解为是RAID 0和RAID 1的折衷方案。RAID 5可以为系统提供数据安全保障，但保障程度要比镜像低而磁盘空间利用率要比镜像高。RAID 5具有和RAID 0相近似的数据读取速度，只是因为多了一个奇偶校验信息，写入数据的速度相对单独写入一块硬盘的速度略慢，若使用“回写高速缓存”可以让性能改善不少。同时由于多个数据对应一个奇偶校验信息，RAID 5的磁盘空间利用率要比RAID 1高，存储成本相对较便宜。</p>
+<p>RAID技术可以通过硬件实现，比如专用的RAID卡或者主板直接支持，也可以通过软件实现。RAID技术在传统关系数据库及文件系统中应用比较广泛，但是在大型网站比较喜欢使用的NoSQL，以及分布式文件系统中，RAID技术却遭到冷落。</p>
+<p>例如在HDFS（Hadoop 分布式文件系统）中，系统在整个存储集群的多台服务器上进行数据并发读写和备份，可以看作在服务器集群规模上实现了类似RAID的功能，因此不需要磁盘RAID。</p>
+<p>HDFS以块（Block）为单位管理文件内容，一个文件被分割成若干个Block，当应用程序写文件时，每写完一个Block，HDFS就将其自动复制到另外两台机器上，保证每个Block有三个副本，即使有两台服务器宕机，数据依然可以访问，相当于实现了RAID1的数据复制功能。</p>
+<p>当对文件进行处理计算时，通过MapReduce并发计算任务框架，可以启动多个计算子任务（MapReduce Task），同时读取文件的多个Block，并发处理，相当于实现了RAID0的并发访问功能。</p>
+<p>rmi  remote UnicastRemoteObject<br>TestRmi t = new TestRmiImp();<br>        LocateRegistry.createRegistry(1199);<br>//        Context namingContext = new InitialContext();<br>        Naming.rebind(“rmi://localhost:1199/test”, t);<br>//        namingContext.bind(“rmi://127.0.0.1:1099/test”, t);//lookup<br>        System.out.println(“&gt;&gt;&gt;&gt;&gt;INFO:远程IHello对象绑定成功！”); </p>
+<p>======================================================<br>在jsp和class文件中调用的相对路径不同。 在jsp里，根目录是WebRoot<br>在class文件中，根目录是WebRoot/WEB-INF/classes 当然你也可以用System.getProperty(“user.dir”)获取你工程的绝对路径。<br>1.jsp中取得路径：<br>以工程名为TEST为例：<br>(1)得到包含工程名的当前页面全路径：request.getRequestURI()<br>结果：/TEST/test.jsp<br>(2)得到工程名：request.getContextPath()<br>结果：/TEST<br>(3)得到当前页面所在目录下全名称：request.getServletPath()<br>结果：如果页面在jsp目录下 /TEST/jsp/test.jsp<br>(4)得到页面所在服务器的全路径：application.getRealPath(“页面.jsp”)<br>结果：D:\resin\webapps\TEST\test.jsp<br>(5)得到页面所在服务器的绝对路径：absPath=new java.io.File(application.getRealPath(request.getRequestURI())).getParent();<br>结果：D:\resin\webapps\TEST<br>2.在类中取得路径：<br>(1)类的绝对路径：Class.class.getClass().getResource(“/“).getPath()<br>结果：/D:/TEST/WebRoot/WEB-INF/classes/pack/<br>(2)得到工程的路径：System.getProperty(“user.dir”)<br>结果：D:\TEST<br>3.在Servlet中取得路径：<br>(1)得到工程目录：request.getSession().getServletContext().getRealPath(“”) 参数可具体到包名。<br>结果：E:\Tomcat\webapps\TEST<br>(2)得到IE地址栏地址：request.getRequestURL()<br>结果：<a href="http://localhost:8080/TEST/test" target="_blank" rel="noopener">http://localhost:8080/TEST/test</a><br>(3)得到相对地址：request.getRequestURI()</p>
+<h1 id="结果：-TEST-test"><a href="#结果：-TEST-test" class="headerlink" title="结果：/TEST/test"></a>结果：/TEST/test</h1><p>spring+hibernate 报错</p>
+<p>java.lang.UnsatisfiedLinkError: apache-tomcat-8.0.23<br>windows-x86\bin\tcnative-1.dll: Can’t load IA 32-bit .dll on a AMD 64-bit platf<br>rm<br>       at java.lang.ClassLoader$NativeLibrary.load(Native Method)<br>       at java.lang.ClassLoader.loadLibrary0(Unknown Source)<br>这个是hibernate-jpa-2.1.jar的问题，并且只有当使用注解的时候才会出现<br>应将<br>@Entity<br>@Table（name=”table_name”）<br>改成<br>@Entity(name=”table_name”)<br>这是不是Bug就不得而知了</p>
+<p>###eclipse 优化和使用<br>    mylyn 任务管理tasklist ,可以创建本地，也可以集成jira、bugzilla 、codereview等管理工具<br>    maven Gradle 使用  构建springside<br>    创建Maven的Web项目：<br>        mvn archetype:create   -DgroupId=plp  -DartifactId=testweb   -DarchetypeArtifactId=maven-archetype-webapp<br>    创建普通工程   mvn archetype:create   -DgroupId=plp  -DartifactId=testProj<br>    mvn compile 编译源代码<br>    mvn deploy 发布项目<br>    mvn test-compile 编译测试源代码<br>    mvn test</p>
+<p>mvn validate        验证工程是否正确，所有需要的资源是否可用。<br>mvn jetty:run 启动jetty服务<br>mvn spring-boot:run<br>mvntomcat:run<br>                                        toolchains file<br> -U,–update-snapshots                  Forces a check for missing<br>                                        releases and updated snapshots on<br>                                        remote repositories<br> -up,–update-plugins                   Ineffective, only kept for<br>                                        backward compatibility<br>mvn clean archetype:create-from-project -Darchetype.properties=./archetype.properties -Darchetype.filteredExtentions=java,xml,jsp,properties,sql 从一个已有项目生成一个archetype</p>
+<p>###tomcat hot 代码替换<br>JavaRebel是一个工具，主要是用于热加载，比如说在Tomcat之类的应用服务器中，更新了class或者某些资源文件，使用了JRebel之后，就不需要重新启动应用服务器 ，是收费的，现在有社区版<br>-noverify -javaagent:D:\FlexBuilderIDE\jrebel5.5.2\jrebel.jar<br>-Drebel.spring_plugin=true<br>-Drebel.struts2-plugin=true</p>
+<a id="more"></a>
+<h2 id="spring-的特点"><a href="#spring-的特点" class="headerlink" title="spring 的特点"></a>spring 的特点</h2><p>spring mvc  请求响应模型<br>servlet –&gt; jsp –&gt;jsp(model 2 ，jsp基本只做展示不包含业务逻辑 )</p>
+<p>是使用了MVC架构模式的思想 根据请求-驱动模型进行轻量级Web框架，将web层进行职责解耦</p>
+<p>Spring Web MVC优势<br>1、清晰的角色划分：前端控制器（DispatcherServlet）、请求到处理器映射（HandlerMapping）、处理器适配器（HandlerAdapter）、视图解析器（ViewResolver）、处理器或页面控制器（Controller）、验证器（   Validator）、命令对象（Command  请求参数绑定到的对象就叫命令对象）、表单对象（Form Object 提供给表单展示和提交到的对象就叫表单对象）。<br>2、分工明确，而且扩展点相当灵活，可以很容易扩展，虽然几乎不需要；<br>3、由于命令对象就是一个POJO，无需继承框架特定API，可以使用命令对象直接作为业务对象；<br>4、和Spring 其他框架无缝集成，是其它Web框架所不具备的；<br>5、可适配，通过HandlerAdapter可以支持任意的类作为处理器；<br>6、可定制性，HandlerMapping、ViewResolver等能够非常简单的定制；<br>7、功能强大的数据验证、格式化、绑定机制；<br>8、利用Spring提供的Mock对象能够非常简单的进行Web层单元测试；<br>9、本地化、主题的解析的支持，使我们更容易进行国际化和主题的切换。<br>10、强大的JSP标签库，使JSP编写更容易。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/03/30/english-cute-words/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          优美英文短句摘抄
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/02/02/2015-02-02-iaas-service-use-and-sum/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">云服务与云计算使用总结</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2015-03-30-the-java-thinking-notes" data-title="java技术笔记" data-url="http://cuteinfo.github.io/2015/03/30/2015-03-30-the-java-thinking-notes/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"plpone"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2018 cuteinfo 的随想录
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/mobile.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  </div>
+</body>
+</html>

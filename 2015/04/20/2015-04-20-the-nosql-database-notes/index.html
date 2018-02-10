@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Mongodb Redis Hbase数据库相关知识 | cuteinfo 的随想录</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="各nosql简介、特点介绍和上手、MongoDB master-slave搭建 ##Redis  Linux 下源码安装   wget http://download.redis.io/releases/redis-2.8.17.tar.gztar xzf redis-2.8.17.tar.gzcd redis-2.8.17make   ubuntu 下apt 安装   apt-get insta">
+<meta name="keywords" content="MongoDB,Redis,Hbase,数据库,DataBase">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mongodb Redis Hbase数据库相关知识">
+<meta property="og:url" content="http://cuteinfo.github.io/2015/04/20/2015-04-20-the-nosql-database-notes/index.html">
+<meta property="og:site_name" content="cuteinfo 的随想录">
+<meta property="og:description" content="各nosql简介、特点介绍和上手、MongoDB master-slave搭建 ##Redis  Linux 下源码安装   wget http://download.redis.io/releases/redis-2.8.17.tar.gztar xzf redis-2.8.17.tar.gzcd redis-2.8.17make   ubuntu 下apt 安装   apt-get insta">
+<meta property="og:updated_time" content="2015-05-25T11:49:01.204Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mongodb Redis Hbase数据库相关知识">
+<meta name="twitter:description" content="各nosql简介、特点介绍和上手、MongoDB master-slave搭建 ##Redis  Linux 下源码安装   wget http://download.redis.io/releases/redis-2.8.17.tar.gztar xzf redis-2.8.17.tar.gzcd redis-2.8.17make   ubuntu 下apt 安装   apt-get insta">
+  
+    <link rel="alternative" href="/atom.xml" title="cuteinfo 的随想录" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/daxiaobai.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+  
+<script type="text/javascript">
+
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?d0ab8b7852615e703d44a365e9408c77";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+
+</script>
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img lazy-src="/baymax.jpg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">cuteinfo</a></h1>
+		</hgroup>
+
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/cuteinfo" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+								<a class="mail" target="_blank" href="#" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">技术菜鸟;非典型纲丝;欣赏独立思考有想法的人。。。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">cuteinfo</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/baymax.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">cuteinfo</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/cuteinfo" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="mail" target="_blank" href="#" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-2015-04-20-the-nosql-database-notes" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/04/20/2015-04-20-the-nosql-database-notes/" class="article-date">
+  	<time datetime="2015-04-19T16:00:00.000Z" itemprop="datePublished">2015-04-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Mongodb Redis Hbase数据库相关知识
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DataBase/">DataBase</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hbase/">Hbase</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MongoDB/">MongoDB</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/">Redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>各nosql简介、特点介绍和上手、MongoDB master-slave搭建</p>
+<p>##Redis</p>
+<ul>
+<li>Linux 下源码安装</li>
+</ul>
+<blockquote>
+<p>wget <a href="http://download.redis.io/releases/redis-2.8.17.tar.gz" target="_blank" rel="noopener">http://download.redis.io/releases/redis-2.8.17.tar.gz</a><br>tar xzf redis-2.8.17.tar.gz<br>cd redis-2.8.17<br>make</p>
+</blockquote>
+<ul>
+<li>ubuntu 下apt 安装</li>
+</ul>
+<blockquote>
+<p>apt-get install redis-server<br>apt-get install redis-server redis-tools</p>
+</blockquote>
+<ul>
+<li>windows下有微软官方支持的 windows版本：redis-win<br>windows 下的客户端软件<blockquote>
+<p>redis_cli 就比较好用<br>RedisDesktopManager ,一款基于qt的跨平台图形界面，还比较好用，其它还有几款国产的，不是特别好用<br>Java 下使用jedis ,API基本和cli下命令一致，毫无壁垒</p>
+</blockquote>
+</li>
+</ul>
+<a id="more"></a>
+<p>##Hbase 和cassandra </p>
+<p>###cassandra</p>
+<p>安装到电脑上稍微尝试了下，等以后学习深入点再写点东西<br>cassandra 逐步放弃 cassandra-cli ,以后更多的使用 csql<br>cassandra(bigtable) 需要配置JAVA_HOME  、CASSANDRA_HOME<br>很多例子中每条语句中都不会带;，但最起码新版的 语句都带分号才能执行<br>cassandra-cli.bat 命令行   cqlsh.bat 可以用sql语句进行处理</p>
+<p>cassandra-cli</p>
+<blockquote>
+<p>connect 127.0.0.1/9160；<br>show keyspaces;</p>
+</blockquote>
+<p>创建表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">create keyspace demo</span><br><span class="line">  with placement_strategy = &apos;SimpleStrategy&apos;</span><br><span class="line">  and strategy_options = &#123;replication_factor : 2&#125;</span><br><span class="line">  and durable_writes = true;</span><br><span class="line"></span><br><span class="line">create column family User with comparator = UTF8Type;</span><br><span class="line">assume User keys as utf8;</span><br><span class="line">set User[&apos;jsmith&apos;][&apos;first&apos;] = &apos;John&apos;;</span><br><span class="line">set User[&apos;jsmith&apos;][&apos;last&apos;] = &apos;Smith&apos;;</span><br><span class="line">set User[&apos;jsmith&apos;][&apos;age&apos;] = &apos;38&apos;;</span><br><span class="line">get User[&apos;jsmith&apos;];</span><br><span class="line">get User where age = &apos;12&apos;;</span><br></pre></td></tr></table></figure></p>
+<p>如果在cli 中创建包含大写的column family 则在 csql 中要使用  select * from “Demo”.”User” 进行查询;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> from stackoverflow by default CQL3 is case-insensitive unless enclosed in double quotation marks. Try putting your CFNAME in double quotes.</span><br><span class="line">SELECT * FROM &quot;CFNAME&quot; LIMIT 1;</span><br><span class="line">Looks like you have forgotten to enable CQL3 from api at the time of table creation</span><br></pre></td></tr></table></figure></p>
+<p>而在csql 中创建的表 u2 则也没发在，需要退出客户端再连接一次。。。，而且schema 中也没有</p>
+<blockquote>
+<p>WARNING: CQL3 tables are intentionally omitted from ‘show schema’ output.</p>
+</blockquote>
+<p>Cassandra不支持关联查询与子查询，这是因为在分布式系统中跨越硬件进行关联查询的性能很差。Cassandra的做法是鼓励你采用去正规化（denormalization）【比如用 集合存储】的方式，从一个单独的表中获取你所需的数据，同时提供集合等工具以简化操作</p>
+<p>###Hbase</p>
+<p>hbase(通过hive也可实现用sql进行操作的)<br>windows 下需要 cywin </p>
+<blockquote>
+<p>hbase  To use an HBase mini-cluster on Microsoft you need to use a Cygwin environment.</p>
+</blockquote>
+<p>Hbase 和它的支持系统源于著名的Google BigTable和Google文件系统设计（GFS的论文发于2003年，BigTable的论文发于2006年）。而 Cassandra 则是最近Facebook的数据库系统的开源分支，她在实现了BigTable的数据模型的同时，使用了基于Amazon的Dynamo的系统架构来存储数据（实际上，Cassandra的最初开发工作就是由两位从Amazon跳槽到Facebook的Dynamo工程师完成的）。</p>
+<p>Cassandra是一具有高扩展性，强调一致性，分布式，键值对存储（Key-Value）的NOSQL 分布式数据库。 它采用了Dynamo的分布式系统技术和Google BigTable的数据模型，拥有像Dynamo一样的数据最终一致性，BigTable一样的基于列簇的键值对存储。<br>Cassandra是由FaceBook的工程师Avinash Lakshman（他也是Amazon的Dynamo的作者）和Prashant Malik 开发，在2008年被FaceBook开源出来。</p>
+<p>##mongodb </p>
+<p>###mongodb 3.x 的问题</p>
+<p>3.x 新增角色控制，客户端无法访问的原因是客户端没有做相应的更新(mongovue ,robomongo ),使用命令行则可以<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">/* 1 */</span><br><span class="line">&#123;</span><br><span class="line">    &quot;_id&quot; : ObjectId(&quot;550917bb9cfe3fd7ea855301&quot;),</span><br><span class="line">    &quot;user&quot; : &quot;root&quot;,</span><br><span class="line">    &quot;pwd&quot; : &quot;2a8025f0885adad5a8ce0044070032b3&quot;,</span><br><span class="line">    &quot;roles&quot; : [ </span><br><span class="line">        &quot;read&quot;, </span><br><span class="line">        &quot;readWrite&quot;, </span><br><span class="line">        &quot;dbAdmin&quot;, </span><br><span class="line">        &quot;userAdmin&quot;, </span><br><span class="line">        &quot;clusterAdmin&quot;, </span><br><span class="line">        &quot;readAnyDatabase&quot;, </span><br><span class="line">        &quot;readWriteAnyDatabase&quot;, </span><br><span class="line">        &quot;userAdminAnyDatabase&quot;, </span><br><span class="line">        &quot;dbAdminAnyDatabase&quot;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* 2 */</span><br><span class="line">&#123;</span><br><span class="line">    &quot;_id&quot; : &quot;admin.admin&quot;,</span><br><span class="line">    &quot;user&quot; : &quot;admin&quot;,</span><br><span class="line">    &quot;db&quot; : &quot;admin&quot;,</span><br><span class="line">    &quot;credentials&quot; : &#123;</span><br><span class="line">        &quot;SCRAM-SHA-1&quot; : &#123;</span><br><span class="line">            &quot;iterationCount&quot; : 10000,</span><br><span class="line">            &quot;salt&quot; : &quot;/AFZoiBVF35r5KSN+bGkDg==&quot;,</span><br><span class="line">            &quot;storedKey&quot; : &quot;53JrWErfjxqykrWAS7UtX9PTvTk=&quot;,</span><br><span class="line">            &quot;serverKey&quot; : &quot;e/9JLjZ35xb37QJDoZ25TpVdtTU=&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;roles&quot; : [ </span><br><span class="line">        &#123;</span><br><span class="line">            &quot;role&quot; : &quot;userAdminAnyDatabase&quot;,</span><br><span class="line">            &quot;db&quot; : &quot;admin&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>3.x 还没正式发布，有bug 很正常，最新2.x 是2.6<br>3.x 基于权限的用户访问控制，提高效率和压缩率，副本最大支持50<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">use admin</span><br><span class="line">db.createUser(</span><br><span class="line">  &#123;</span><br><span class="line">    user: &quot;admin&quot;,</span><br><span class="line">    pwd: &quot;admin&quot;,</span><br><span class="line">    roles: [ &#123; role: &quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot; &#125; ]</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+<p>###mongodb 客户端工具MongoVue 和robomongo<br>MongoVUE是个免费软件，但超过15天后功能受限。可以通过删除以下注册表项来解除限制：<br>[HKEY_CURRENT_USER\Software\Classes\CLSID{B1159E65-821C3-21C5-CE21-34A484D54444}\4FF78130]</p>
+<p>Mongovue 可以直接打开 fs中的图片，但没法单独对fs的fs.files 和fs.trunks 进行操作(删除，修改，复制)，<br>robomongo 则可以，但却不可直接打开图片，鱼和熊掌不可兼得，配合使用最佳</p>
+<p>###mongodb replica set</p>
+<p>好处，所有权限什么都不用单独设置，是完全同步的  ，没有主从，能实现failover<br>repl 启动后，两个数据库都没法访问 无法增删<br>需要执行以下语句<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">cfg=&#123;_id:&apos;shard1&apos;,members:[ </span><br><span class="line">&#123;_id:0,host:&apos;127.0.0.1:28018&apos;&#125;, </span><br><span class="line">&#123;_id:1,host:&apos;127.0.0.1:28019&apos;&#125;] </span><br><span class="line">&#125; </span><br><span class="line">rs.initiate(cfg)</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    &quot;startupStatus&quot; : 4,</span><br><span class="line">    &quot;info&quot; : &quot;sha&quot;,</span><br><span class="line">    &quot;errmsg&quot; : &quot;all members and seeds must be reachable to initiate set&quot;,</span><br><span class="line">    &quot;ok&quot; : 0</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>除了“主” 以外的数据库都要是空的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;errmsg&quot; : &quot;couldn&apos;t initiate : member 127.0.0.1:28019 has data already, cannot initiate set.  All members except initiator must be empty.&quot;,</span><br><span class="line">    &quot;ok&quot; : 0</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* 0 */</span><br><span class="line">&#123;</span><br><span class="line">    &quot;info&quot; : &quot;Config now saved locally.  Should come online in about a minute.&quot;,</span><br><span class="line">    &quot;ok&quot; : 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>###配置主从复制总监遇到的问题 </p>
+<ol>
+<li><p>2.x<br>从数据库  auth 验证失败  应该是admin 数据库失效，其它数据库无法添加数据(local除外),其它数据库也无法连接和进行操作数据，<br>local 下删除 repl 帐号也是可以同步的，重启后则不可以，添加repl 则不需要重启</p>
+</li>
+<li><p>3.x<br>mongodb 3.x 权限控制更加严格，–auth 认证后一直无法连接，单独做主机也不可以，需要看下官方文档(等3.x稳定版发布就好多的)。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Master/slave options:</span><br><span class="line">  --master              master mode</span><br><span class="line">  --slave               slave mode</span><br><span class="line">  --source arg          when slave: specify master as &lt;server:port&gt;</span><br><span class="line">  --only arg            when slave: specify a single database to replicate</span><br><span class="line">  --slavedelay arg      specify delay (in seconds) to be used when applying</span><br><span class="line">                        master ops to slave</span><br><span class="line">  --autoresync          automatically resync if slave data is stale</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>Mongodb3.x还会引入事务，并可替换存储引擎。<br>ps:nosql 和rdbms(postgresql,mysql)，直接越来越像，Maria要支持bson的结构，postgresql也一样。未来很好！</p>
+<p>##mongodb 安装windows 服务</p>
+<p>一个应用程序只能创建一个windows服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mongod.exe --dbpath &quot;C:\mongodb64\data\db&quot; --logpath &quot;C:\mongodb64\log\2014.log&quot; --install --serviceName &quot;MongoDB&quot;</span><br><span class="line">mongod  --logpath F:\mongodb64-files\log\mongo-2014.log --dbpath F:\mongodb64-files\data\db --auth --serviceName mongodb64 --install</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> -bind_ip 127.0.0.1</span><br><span class="line">&quot;C:\mongodb64\bin\mongod.exe&quot; --dbpath  &quot;C:\mongodb64\data\db&quot;  --logpath  &quot;C:\mongodb64\log\2014.log&quot;  --service</span><br></pre></td></tr></table></figure>
+<p>权限验证和ip限制<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\mongodb64\bin&gt;mongod --bind_ip 127.0.0.1（或localhost） --logpath C:\mongodb64\log\mongo.log --dbpath C:\mongodb64\data\db --auth --serviceName mongodb1 --install</span><br></pre></td></tr></table></figure></p>
+<p>无权限验证和ip限制<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongod  --logpath C:\mongodb64\log\mongo.log --dbpath C:\mongodb64\data\db  --serviceName mongodb --install</span><br></pre></td></tr></table></figure></p>
+<p>删除服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sc delete mongodb1</span><br></pre></td></tr></table></figure></p>
+<p>admin的帐号 才可以查看其它的数据库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show dbs</span><br></pre></td></tr></table></figure></p>
+<p>删除fs 的虚拟collections(其实文件和collection 是共用的)  删除col  db.collection.drop();</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/04/30/2015-04-30-the-linux-command-notes/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Linux常用命令笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/04/01/2015-04-01-the-mysql-database-notes/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MySQL数据库相关知识</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2015-04-20-the-nosql-database-notes" data-title="Mongodb Redis Hbase数据库相关知识" data-url="http://cuteinfo.github.io/2015/04/20/2015-04-20-the-nosql-database-notes/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"plpone"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2018 cuteinfo 的随想录
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/mobile.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  </div>
+</body>
+</html>
