@@ -12,7 +12,7 @@
 <meta property="og:url" content="http://cuteinfo.github.io/2015/04/01/2015-04-01-the-mysql-database-notes/index.html">
 <meta property="og:site_name" content="cuteinfo 的随想录">
 <meta property="og:description" content="mysql 5.6 &amp;amp; maria10mysql 5.5 &amp;amp; maria   数据库事务acid ，原子性Atomicity 一致性Consistency(完整性约束条件)隔离性 (互相不可见，串行  Isolation）、持久性（Durability）事务完成后所有操作便持久的保存到数据库中数据库优化    选择合适的字段(短、简单)、尽量不用非空存储字段、主键和索引尽量使用数">
-<meta property="og:updated_time" content="2018-02-10T04:40:33.437Z">
+<meta property="og:updated_time" content="2018-02-10T04:44:56.328Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL数据库相关知识">
 <meta name="twitter:description" content="mysql 5.6 &amp;amp; maria10mysql 5.5 &amp;amp; maria   数据库事务acid ，原子性Atomicity 一致性Consistency(完整性约束条件)隔离性 (互相不可见，串行  Isolation）、持久性（Durability）事务完成后所有操作便持久的保存到数据库中数据库优化    选择合适的字段(短、简单)、尽量不用非空存储字段、主键和索引尽量使用数">
@@ -330,7 +330,6 @@ var _hmt = _hmt || [];
 <p>#master-user=repl </p>
 <p>#master-password=repl</p>
 <p>#master-connect-retry=10<br>read-only=1</p>
-<!--more-->
 <p>=========================================<br>PostgreSQL  有更多的优势，在某些方面更像oracle<br>比mysql 有更多的优势<br>    在非结构化数据的存取更方便</p>
 <p>初始化数据库 initdb  -D  ..\data –locale=C   -U postgres -W  //-E UTF-8<br>启动数据库  pg_ctl -D  ..\data  -l logfile start </p>
 <p>默认端口5432</p>
